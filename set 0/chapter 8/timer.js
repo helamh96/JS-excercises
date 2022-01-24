@@ -23,7 +23,7 @@ function c(){
 
 function delayer(){
     for(let timers=0; timers>=0; timers++){
-        sleep(30000);
+        sleep(15000);
         if(timers/2 == Math.floor(timers/2)){
             a();
         }
