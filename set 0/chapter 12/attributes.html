@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="a" class="square" style="display:inline-block" val="something important"></div>
+    <button onclick="show()">click to show</button>
+    <script>
+        let y= ["id", "class", "style", "val"];
+        function show(){
+            for(let i=0; i<y.length;i++){
+                alert($('div').attr(y[i]));
+            }
+        }
+    </script>
+</body>
+</html>
