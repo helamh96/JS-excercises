@@ -1,11 +1,11 @@
 function distance(){
-    if(arguments.length>6){return "exceed the cuantity of parameters";}
+    if(arguments.length>6){return console.error("exceed the cuantity of parameters");}
     if(arguments.length<=2 || arguments.length % 2 == 1)
-    {return "Insufficient parameters";}
+    {return console.error("Insufficient parameters");}
     else{
         let sum=0;
         for(let i=0; i<(arguments.length/2) ; i++){
-            var foo=0;
+            let foo=0;
             foo=(arguments[i]-arguments[i+arguments.length/2])*(arguments[i]-arguments[i+arguments.length/2]);
             sum=foo+sum;
         }
