@@ -1,8 +1,14 @@
-function addRec(x,n) {
-    if (n<=0)
+function addRec(array){
+    let n=array;
+    let counter
+    if(n.length===0){
         return 0;
+    }
     else{
-        return(addRec(x,n-1)+x[n-1]);
+        counter=n[0]
+        n.shift();
+        counter+=addRec(n);
+        return counter;
     }
 }
 
