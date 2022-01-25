@@ -11,11 +11,6 @@ function printObjProp(x,y){
             }
         }
     }
-    if(y==false){
-        for (let prop in x) {
-            console.log(prop);
-        }
-    }
     return 0;
 }
 
