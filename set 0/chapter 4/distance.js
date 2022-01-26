@@ -1,7 +1,6 @@
 function distance(){
-    if(arguments.length>6){return console.error("exceed the cuantity of parameters");}
-    if(arguments.length<=2 || arguments.length % 2 == 1)
-    {return console.error("Insufficient parameters");}
+    if(arguments.length>6){return new Error("exceed the cuantity of parameters");}
+    if(arguments.length<=2 || arguments.length % 2 == 1){return new Error("Insufficient parameters");}
     else{
         let sum=0;
         for(let i=0; i<(arguments.length/2) ; i++){
