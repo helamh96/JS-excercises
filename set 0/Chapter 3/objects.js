@@ -1,15 +1,11 @@
 function printObjProp(x,y){
-    if(y==null){
+    if(y===false || y===undefined){
         for (let prop in x) {
             console.log(prop);
         }
     }
-    if(y==true){
-        for (let i=0; i<x.length ; i++) {
-            if(typeof x[i] != 'function'){
-                console.log(x[i]);
-            }
-        }
+    if(y===true){
+        Object.keys(x).forEach(prop => console.log(prop))
     }
     return 0;
 }
