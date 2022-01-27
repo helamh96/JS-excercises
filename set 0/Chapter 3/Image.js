@@ -4,7 +4,7 @@ function Image(datum, width, heigth, name){
     this.heigth=heigth;
     this.name=name;
     this.pixelData = function pix(x,y){
-        let newpix= (x*40+y);
+        let newpix= ((x-1)*40+y);
         return data[newpix];
     }
 }
