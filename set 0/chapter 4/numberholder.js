@@ -1,14 +1,30 @@
-let numHolder ={};
-
-function verifyNum(x){
-    if(typeof x == "number"){
-        numHolder.a=x;
-    }
-    else{
-        console.log("this is not a number");
-    }
+function holdingNum(num) {
+    let private = {
+        num:num
+    };
+    Object.defineProperties(this, {
+        num: getAccessor(private, "num", "Number")
+    });
 }
 
-num=1;
-verifyNum(num);
-console.log(numHolder);
+function getAccessor(obj, key, type) {
+    return {
+        get: function () {
+            return obj[key];
+        },
+        set: function (value) {
+            if (typeOf(value) === type)
+                obj[key] = value;
+        }
+    };
+}
+
+function typeOf(value) {
+    return Object.prototype.toString.call(value).slice(8,-1);
+}
+
+let onlyNumbers = new holdingNum(20);
+
+onlyNumbers.num = "I wont be assigned to this variable"; 
+
+console.log(onlyNumbers.num);
