@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>content divs</title>
+
+    <style>
+
+        .row {
+            height:60px;
+            line-height:1em;
+        }
+        .box {
+            display:inline-block;
+            height:60px;
+            width:60px;
+            box-sizing:border-box;
+            border:1px solid red; 
+        }
+        .gui{
+            margin-bottom: 50px;
+        }
+
+    </style>
+
+</head>
+<script>
+
+    const container = document.getElementById("container");
+    let rows;
+    let cells;
+
+    function myFunction() {
+        rows = document.getElementById("rows").value;
+        cells = document.getElementById("col").value;
+
+        function grid(el) {
+            let container = document.createElement("div");
+            container.id = "main";
+            container.className = "container";
+
+            for (i=0; i<rows; i+=1) {
+                var row = document.createElement("div");
+                row.className = "row";
+                row.id = "row" + i;
+            
+                for (k=0; k<cells; k+=1) {
+                    var box = document.createElement("div");
+                    box.className = "box";
+                    row.appendChild(box);
+                };
+                container.appendChild(row);      
+            };
+            el.appendChild(container);
+        };
+        grid(document.body);
+        document.body.removeChild(document.body.children[2]);
+        document.body.removeChild(document.body.children[1]);
+        grid(document.body);
+        
+    }
+</script>
+<body>
+    <div class="gui">
+        <input type="text" id="rows" value="Number of rows...">
+        <input type="text" id="col" value="Number of columns...">
+        <button onclick="myFunction()">display the grid</button>
+    </div>
+    
+</body>
+</html>
