@@ -1,8 +1,9 @@
 function dataType(){
     for(var i=0; i<arguments.length; i++){
         switch (typeof arguments[i]){
+            
             case "number":
-                if(arguments[i]-Math.floor(arguments[i])===0){console.log("integer");}
+                if(Number.isInteger(arguments[i])){console.log("integer");}
                 else {console.log("float");}
                 break;
                 
@@ -14,6 +15,7 @@ function dataType(){
                 if(Array.isArray(arguments[i])){console.log("Array");}
                 else{console.log("object");}
                 break;
+                
             case "function":
                 console.log("function");
                 break;
