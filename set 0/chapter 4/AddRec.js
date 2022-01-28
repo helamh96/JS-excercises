@@ -13,4 +13,4 @@ function addRec(array){
 }
 
 var arr = [ 1, 3, 5, 7];
-var sum = addRec (arr, arr.length);
+var sum = addRec (arr);
