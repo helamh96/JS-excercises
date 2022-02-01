@@ -27,13 +27,13 @@ function distance(){
         case (arguments.length<=2):
             if(verifyarray(arguments[0],arguments[1]))
             {return distofarray(arguments[0],arguments[1])}
-            else{return new Error("Incompatible point data")}
+            else{console.error("Incompatible point data")}
             break;
         case(arguments.length%2==1&&arguments.length<6):
-            return new Error("insufficient parameters");
+            console.error("insufficient parameters");
             break;
         case (arguments.length>6):
-            return new Error("exceed the parameters");
+            console.error("exceed the parameters");
             break;
         case (arguments.length===4):
             return dist(arguments[0],arguments[1],arguments[2],arguments[3]);
