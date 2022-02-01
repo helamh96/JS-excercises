@@ -1,11 +1,11 @@
-function addRec(array){
-    let n=array;
-    let counter
+function addRec(a){
+    let n=[...a];
+    let counter=0;
     if(n.length===0){
         return 0;
     }
     else{
-        counter=n[0]
+        counter+=n[0];
         n.shift();
         counter+=addRec(n);
         return counter;
