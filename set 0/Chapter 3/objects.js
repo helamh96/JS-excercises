@@ -1,13 +1,12 @@
 function printObjProp(x,y){
-    if(y===false || y===undefined){
+    if(y){
+        Object.keys(x).forEach(prop => console.log(prop))
+    }
+    else{
         for (let prop in x) {
             console.log(prop);
         }
     }
-    if(y===true){
-        Object.keys(x).forEach(prop => console.log(prop))
-    }
-    return 0;
 }
 
 
@@ -20,3 +19,4 @@ CustomObject.prototype.c = function () { return this.a + this.b; };
 	printObjProp (obj); // output: a, b, c
 	printObjProp (obj, false); // output: a, b, c
 	printObjProp (obj, true); // output: a, b
+
