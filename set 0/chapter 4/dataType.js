@@ -7,21 +7,16 @@ function dataType(){
                 else {console.log("float");}
                 break;
                 
-            case "string":
-                console.log("string");
-                break;
-                
             case "object":
                 if(Array.isArray(arguments[i])){console.log("Array");}
                 else{console.log("object");}
                 break;
-                
-            case "function":
-                console.log("function");
+            
+            default:
+                console.log(typeof arguments[i]);
                 break;
         }
     }
-    return "";
 }
 
 dataType (1, 6.2831, “pi*2”, [function(){}, 1], {}, function () {});
