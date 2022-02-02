@@ -1,4 +1,4 @@
-function holdingNum(num) {
+function HoldingNum(num) {
     let private = {
         num:num
     };
@@ -23,7 +23,7 @@ function typeOf(value) {
     return Object.prototype.toString.call(value).slice(8,-1);
 }
 
-let onlyNumbers = new holdingNum(20);
+let onlyNumbers = new HoldingNum(20);
 
 onlyNumbers.num = "I wont be assigned to this variable"; 
 
