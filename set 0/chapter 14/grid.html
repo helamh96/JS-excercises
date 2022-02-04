@@ -4,70 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>content divs</title>
-
-    <style>
-
-        .row {
-            height:60px;
-            line-height:1em;
-        }
-        .box {
-            display:inline-block;
-            height:60px;
-            width:60px;
-            box-sizing:border-box;
-            border:1px solid red; 
-        }
-        .gui{
-            margin-bottom: 50px;
-        }
-
-    </style>
-
+    <title>GRID CREATOR</title>
 </head>
-<script>
+<style>
 
-    const container = document.getElementById("container");
-    let rows;
-    let cells;
-
-    function myFunction() {
-        rows = document.getElementById("rows").value;
-        cells = document.getElementById("col").value;
-
-        function grid(el) {
-            let container = document.createElement("div");
-            container.id = "main";
-            container.className = "container";
-
-            for (i=0; i<rows; i+=1) {
-                let row = document.createElement("div");
-                row.className = "row";
-                row.id = "row" + i;
-            
-                for (k=0; k<cells; k+=1) {
-                    let box = document.createElement("div");
-                    box.className = "box";
-                    row.appendChild(box);
-                };
-                container.appendChild(row);      
-            };
-            el.appendChild(container);
-        };
-        grid(document.body);
-        document.body.removeChild(document.body.children[2]);
-        document.body.removeChild(document.body.children[1]);
-        grid(document.body);
-        
+    .box{
+        border: solid blue;
+        float: left;
+        box-sizing: border-box;
+        text-align: center;
+        height: 60px;
     }
-</script>
+
+</style>
 <body>
-    <div class="gui">
-        <input type="text" id="rows" value="Number of rows...">
-        <input type="text" id="col" value="Number of columns...">
-        <button onclick="myFunction()">display the grid</button>
+    <h1 style="text-align: center;">THIS IS A GRID CREATOR</h1>
+    <h2 class="gui">
+        <input type="input" id="rows" name="rows" value="rows..."/>
+        <input type="input" id="col" name="col" value="columns..."/>
+        <button id="btn">display the grid</button>
+    </h2>
+    <div class="cont">
+
     </div>
-    
+    <script>
+        let newGrid = document.querySelector(".cont");
+        function onClick(){
+            let rows = document.getElementById("rows").value;
+            let cells = document.getElementById("col").value;
+            let wid = 100/cells;
+            newGrid.innerHTML = "";
+            for (let i=0; i<cells*rows; i++){
+                let div = document.createElement("div");
+                div.setAttribute("class", "box");
+                div.style.width = wid+"%";
+                newGrid.appendChild(div);
+            }
+        }
+
+    let button = document.getElementById('btn');
+    button.addEventListener('click', onClick);
+
+    </script> 
 </body>
 </html>
