@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set the atributes</title>
+
+</head>
+<body>
+    <h1>SET THE ATTRIBUTES</h1>
+    <div class="container">this div is color orange, the font is 30px an the font is color green</div>
+    <script>
+        function setAtributes(color="black", fSize=50, bg="yellow"){
+        this.style.color = color;
+        this.style.backgroundColor = bg;
+        this.style.fontSize = fSize+"px";
+    }
+    let elem = document.getElementsByClassName("container")[0];
+    setAtributes.call(elem, "green", 30, "orange"); 
+    </script> 
+</body>
+</html>
