@@ -4,24 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>button</title>
 </head>
-<script type="text/javascript">
-    $(function(){
-        var count=0;
-        $(".btn").click(function(){
-            count++;
-            if(count==3){
-                $(".btn").attr("disabled",true);
-            }
-        })
-    })
-    var count = 0;
-</script>
+
 <body>
-    <button onclick="a()" class="btn">
-        clickme
-    </button>
+    <h1 style="text-align: center;">THIS BUTTON ONLY CAN BE CLICKED 3 TIMES</h1>
+    <div class="cont">
+        <button class="btn" >Click me!!</button>
+        <meter id = "meter" value="0" min="0" max="3"></meter>
+    </div>
+
+    <script type="text/javascript">
+
+        let e = document.getElementsByClassName('cont');
+    
+        function fn(){
+            let counter =0;
+            function count(){
+                counter++;
+            }
+            return count;
+        }
+    
+        let f = fn();
+    
+        function click(){
+            let met = document.getElementById('meter');
+            let n = met.getAttribute('value');
+            n++;
+            met.value = n;
+            f();
+            if (n >= 3){
+                document.getElementsByClassName("btn")[0].disabled = true;
+            }
+        }
+    
+        let button = document.getElementsByClassName('btn')[0];
+        button.addEventListener('click',click)
+    </script>
+
 </body>
 </html>
