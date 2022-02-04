@@ -38,11 +38,11 @@ var ans = myLib.math.matrix.times(
           );
 
 /*WITH STATETMENT*/
-var answer1;
+let answer1;
 
 with(myLib.math.real){answer1=sub(add(20,22),mul(2,5))};
 
-var ans1;
+let ans1;
 
 with(myLib.math.matrix){ans1= times(eye(4), myLib.math.complex.sub(myLib.math.complex.Num(myLib.math.real.add(5,2),-3),myLib.math.complex.Num(3,4)))};
 
@@ -52,6 +52,6 @@ let real=myLib.math.real;
 let matrix=myLib.math.matrix;
 let complex=myLib.math.complex;
 
-var answer2=real.sub(real.add(20,22),real.mul(2,5));
+let answer2=real.sub(real.add(20,22),real.mul(2,5));
 
-var ans2=matrix.times(matrix.eye(4),complex.sub(complex.Num(real.add(5,2),-3),complex.Num(3,4)));
+let ans2=matrix.times(matrix.eye(4),complex.sub(complex.Num(real.add(5,2),-3),complex.Num(3,4)));
