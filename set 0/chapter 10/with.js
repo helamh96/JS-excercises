@@ -23,11 +23,11 @@ var myLib = {
 };
 
 
-var answer = myLib.math.real.sub(
+let answer = myLib.math.real.sub(
                   myLib.math.real.add (20, 22), 
                   myLib.math.real.mul(2,5));
 
-var ans = myLib.math.matrix.times(
+let ans = myLib.math.matrix.times(
               myLib.math.matrix.eye (4), 
               myLib.math.complex.sub (
                       new myLib.math.complex.Num (
