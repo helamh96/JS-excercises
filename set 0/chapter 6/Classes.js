@@ -60,3 +60,28 @@ let triangl = new triangle(2,2,3);
 
 console.log(triangl.area);
 console.log(triangl.perimeter);
+
+//NEW CLASS
+
+class Pokemon{
+    constructor(namePoke, nPokedex, pType, pSize){
+        this.name=namePoke;
+        this.number=nPokedex;
+        this.type=pType;
+        this.size=pSize;
+    }
+    get combatPoint(){
+        return this.cp();
+    }
+    cp(){
+        return this.number*this.size;
+    }
+}
+
+let bulbasaur= new Pokemon("bulbasaur",1, "plant/poison",70);
+console.log(bulbasaur.name);
+console.log(bulbasaur.combatPoint);
+
+let kingdra =new Pokemon("kingdra",230,"watter/dragon",180)
+console.log(kingdra.name);
+console.log(kingdra.combatPoint);
