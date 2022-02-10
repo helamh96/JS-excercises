@@ -1,4 +1,4 @@
-fetch("https://my-json-server.typicode.com/helamh96/proof/db")
+fetch("./db.json")
 .then(function(resp){
   return resp.json();
 })
