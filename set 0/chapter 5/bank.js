@@ -1,47 +1,58 @@
-let accounts = [];
-
-function newAccount(account,user,amount){
-    let acc = {username:user, balance:amount}
-    accounts.push(acc);
-}
-
-function getAccount(username) {
-    let foundUser;
-    accounts.forEach(function (element, index) {
-        if (element.username === username){
-            foundUser = element;
-        } 
-    });
-    return foundUser;
-}
-
-
-function deposit(username, amount) {
-    let foundUser = getAccount(username, accounts);
-    let deposited = foundUser.balance + amount;
-    console.log("You have deposited $" + amount +".");
-    return foundUser.balance += amount;
-}
-
-function withdraw(username, amount) {
-    let foundUser = getAccount(username, accounts);
-    if (amount > foundUser.balance){
-        console.log("I am sorry, you do not have enough funds");
-    } else {
-        return foundUser.balance -= amount;
+class Bank{
+    constructor(name, accounts){
+        this.name = name;
+        this.accounts = accounts;
+    }
+    getC(accNum){
+        let c = this.accounts.filter(client => client["accNum"] === accNum)[0];
+        return c;
+    }
+    getBalance(accNum){
+        let bc = this.getC(accNum)
+        return bc["funds"];
+    }
+    addC(client){
+        this.accounts.push(client);
+    } 
+    withdraw(quantity, accNum){
+        let rc = this.getC(accNum);
+        if (rc["funds"] >= quantity){
+            rc["funds"] -= quantity;
+            return quantity;
+        }else{
+            console.log("Not enough money.");
+        }
+    }
+    deposit(quantity, destinyAccount){
+        let destinyUser = this.getC(destinyAccount);
+        destinyUser["funds"] += quantity;
     }
 }
 
-function getBalance(username) {
-    let foundUser = getAccount(username, accounts);
-    if (foundUser) {
-        console.log("Your account currently has $" + foundUser.balance + " balance.");       
-    } else {
-        console.log("There is no account matching");
-    }    
+class Client{
+    constructor(name, cash, account){
+        this.name = name;
+        this.cash = cash;
+        this.account = account;
+    }
+    getBalance(){
+        return bank.getBalance(this.account);
+    }
+    deposit(quantity, receiver){
+        if(this.cash<quantity){
+            console.log("Not enough cash");
+        } else{
+            this.cash -= quantity;
+            bank.deposit(quantity, receiver);
+        }
+    }
+    withdraw(quantity){
+        this.cash += bank.withdraw(quantity, this.account)
+    }
 }
 
-newAccount("Helam","Helam",123);
-getBalance("Helam");
-deposit("Helam",233);
-withdraw("Helam",24);
+function createC(name, accNum, fund, cash){
+    let newC = new Client(name, cash, accNum);
+    bank.addC({"accNum":accNum, "cName":name, "funds":fund});
+    return newC;
+}
