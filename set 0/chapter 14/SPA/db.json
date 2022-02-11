@@ -1,15 +1,19 @@
-{"topic1":{
+{
+    
+"topic1":{
     "title":"Title 1", 
     "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas libero a laoreet blandit. Quisque vel nunc feugiat, commodo risus vitae, consequat enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla rhoncus, lectus id lacinia fermentum, purus enim vehicula risus, id mattis erat libero cursus tortor. Pellentesque turpis augue, molestie at sollicitudin laoreet, finibus id enim. Praesent vehicula elementum tellus, quis suscipit tortor. Suspendisse potenti. Nulla ac magna nisl. Nullam fringilla maximus ipsum et congue. Curabitur mattis est quis maximus venenatis. Mauris at tincidunt felis, sed posuere eros. Donec eget arcu elementum, suscipit augue vitae, interdum magna. Aliquam auctor feugiat ipsum in ullamcorper.",
-    "image": "https://images.unsplash.com/photo-1621440318464-72633426377b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80",
+    "image":"https://images.unsplash.com/photo-1621440318464-72633426377b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80"
     },
 "topic2": {
     "title":"Title 2", 
     "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas libero a laoreet blandit. Quisque vel nunc feugiat, commodo risus vitae, consequat enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla rhoncus, lectus id lacinia fermentum, purus enim vehicula risus, id mattis erat libero cursus tortor. Pellentesque turpis augue, molestie at sollicitudin laoreet, finibus id enim. Praesent vehicula elementum tellus, quis suscipit tortor. Suspendisse potenti. Nulla ac magna nisl. Nullam fringilla maximus ipsum et congue. Curabitur mattis est quis maximus venenatis. Mauris at tincidunt felis, sed posuere eros. Donec eget arcu elementum, suscipit augue vitae, interdum magna. Aliquam auctor feugiat ipsum in ullamcorper.",
-    "image": "https://cdn.pixabay.com/photo/2013/08/07/01/39/number-170404_960_720.jpg",
+    "image":"https://cdn.pixabay.com/photo/2013/08/07/01/39/number-170404_960_720.jpg"
     },
 "topic3":{
     "title": "Title 3", 
     "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas libero a laoreet blandit. Quisque vel nunc feugiat, commodo risus vitae, consequat enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla rhoncus, lectus id lacinia fermentum, purus enim vehicula risus, id mattis erat libero cursus tortor. Pellentesque turpis augue, molestie at sollicitudin laoreet, finibus id enim. Praesent vehicula elementum tellus, quis suscipit tortor. Suspendisse potenti. Nulla ac magna nisl. Nullam fringilla maximus ipsum et congue. Curabitur mattis est quis maximus venenatis. Mauris at tincidunt felis, sed posuere eros. Donec eget arcu elementum, suscipit augue vitae, interdum magna. Aliquam auctor feugiat ipsum in ullamcorper.",
-    "image":"https://biblioteca.acropolis.org/wp-content/uploads/2015/08/3.png",
-    }}
+    "image":"https://biblioteca.acropolis.org/wp-content/uploads/2015/08/3.png"
+    }
+
+}
