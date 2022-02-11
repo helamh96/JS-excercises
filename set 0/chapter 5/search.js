@@ -1,24 +1,36 @@
-const linearSearch = (arr, target) => {
-    let v=false;
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-            if (arr[i][j].equipment === target) {
-                console.log("the "+building[i][j].equipment+" is on the floor "+(i+1)+" room "+(j+1)+" and this piece of equipment is  associated to "+building[i][j].person+".");
-                v=true;
-                
-            }
+let building = {"person":{"Alan":{"floor":"3","room":"4", "equipment":"broom"},
+                           "Otis":{"floor":"5","room":"1", "equipment":""},
+                           "Steve":{"floor":"4","room":"1", "equipment":""}
+                            },
+                "equipment":{"laptop":{"floor":"mezzanine","room":"principal","worker":""},
+                             "printer":{"floor":"5","room":"1","worker":""},
+                             "car":{"floor":"-1","room":"1st place","worker":""},
+                             "microwave":{"floor":"1","room":"cafeteria","worker":""}
+                            }
+                };
+
+function searching(){
+    let cache = {};
+    function looks (x){
+        if (Object.keys(cache).indexOf(x)>=0){
+            return cache[x]
         }
+        let item = {};
+        if (Object.keys(building["person"]).indexOf(x)>=0){
+            item = building["person"][x];
+        } else if (Object.keys(building["equipment"]).indexOf(x)>=0){
+            item = building["equipment"][x];
+        }
+        if (Object.keys(item).length>0){
+            cache[x] = item;
+        }
+        return item;
     }
-    if(v==false){ console.error("this equipment is not in the building");}
+    return looks;
 }
 
-let n=10;
-let building = new Array(n);
-
-for (let i = 0; i < building.length; i++) {
-    building[i] = new Array(n).fill(0);
-}
-
-building[0][0]={equipment:"broom", person:"Alan"};
-
-linearSearch(building,"broom");
+let search = searching();
+console.log(search("Otis"));
+console.log(search("car"));
+console.log(search("Steve"));
+console.log(search("laptop"))
