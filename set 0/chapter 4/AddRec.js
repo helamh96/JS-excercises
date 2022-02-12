@@ -1,16 +1,14 @@
-function addRec(a){
-    let n=[...a];
-    let counter=0;
-    if(n.length===0){
-        return 0;
+let i=0;
+let sum=0;
+
+function addRec(arr){
+    sum += arr[i];
+    if (arr.length -1 === i){
+        return sum;
     }
-    else{
-        counter+=n[0];
-        n.shift();
-        counter+=addRec(n);
-        return counter;
-    }
+    i++;
+    return addRec(arr);
 }
 
 var arr = [ 1, 3, 5, 7];
-var sum = addRec (arr);
+console.log(addRec(arr));
