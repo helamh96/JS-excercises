@@ -1,9 +1,9 @@
-function printObjProp(x,y){
-    if(y){
-        Object.keys(x).forEach(prop => console.log(prop))
+nction printObjProp(nObj,booleanVal){
+    if(booleanVal){
+        Object.keys(nObj).forEach(prop => console.log(prop))
     }
     else{
-        for (let prop in x) {
+        for (let prop in nObj) {
             console.log(prop);
         }
     }
@@ -19,4 +19,3 @@ CustomObject.prototype.c = function () { return this.a + this.b; };
 	printObjProp (obj); // output: a, b, c
 	printObjProp (obj, false); // output: a, b, c
 	printObjProp (obj, true); // output: a, b
-
