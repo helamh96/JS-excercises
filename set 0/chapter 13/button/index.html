@@ -16,31 +16,20 @@
 
     <script type="text/javascript">
 
-        let e = document.getElementsByClassName('cont');
+        let e = document.getElementsByClassName("cont");
     
-        function fn(){
-            let counter =0;
-            function count(){
-                counter++;
-            }
-            return count;
-        }
-    
-        let f = fn();
-    
+        let n=0;
+
         function click(){
-            let met = document.getElementById('meter');
-            let n = met.getAttribute('value');
+            let met = document.getElementById("meter");
             n++;
             met.value = n;
-            f();
             if (n >= 3){
                 document.getElementsByClassName("btn")[0].disabled = true;
             }
         }
-    
-        let button = document.getElementsByClassName('btn')[0];
-        button.addEventListener('click',click)
+        let button = document.getElementsByClassName("btn")[0];
+        button.addEventListener("click",click)
     </script>
 
 </body>
