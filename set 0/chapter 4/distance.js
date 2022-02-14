@@ -1,6 +1,6 @@
 function distance(){
-    if(arguments.length>6){return new Error("exceed the cuantity of parameters");}
-    if(arguments.length<=2 || arguments.length % 2 == 1){return new Error("Insufficient parameters");}
+    if(arguments.length>6){throw Error("exceed the cuantity of parameters");}
+    if(arguments.length<=2 || arguments.length % 2 == 1){throw Error("Insufficient parameters");}
     else{
         let sum=0;
         for(let i=0; i<(arguments.length/2) ; i++){
@@ -11,5 +11,4 @@ function distance(){
         return Math.sqrt(sum);
     }
 }
-
 console.log(distance(1,2,2,3,3,4));
