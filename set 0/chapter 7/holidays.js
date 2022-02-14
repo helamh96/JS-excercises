@@ -11,10 +11,10 @@ let dates = {
     "31/21":"(New year's eve)"
 }
 
-function ChangeDate(x){
-    let foo=new Date(x);
-    foo=foo.toLocaleDateString('en-GB');
-    console.log("the date "+x+" in the US format is "+foo+" in the Great Britain "+dates[foo.slice(0,5)]);
+function ChangeDate(USDate){
+    let foo = USDate.match(/\w{2}/gi);
+    let ndate = foo[1]+"/"+foo[0]+"/"+foo[2];
+    console.log("the date "+USDate+" in the US format is "+ndate+" in the Great Britain "+dates[ndate.slice(0,5)]);
 }
 
 ChangeDate("12/25/82");
