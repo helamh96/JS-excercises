@@ -1,9 +1,11 @@
-function hextorgb(x){
-    let r=x.charAt(1)+x.charAt(2);
-    let g=x.charAt(3)+x.charAt(4);
-    let b=x.charAt(5)+x.charAt(6);
-    let rgb=`RGB(${parseInt(r,16)},${parseInt(g,16)},${parseInt(b,16)})`;
+function hexToRgb(hex){
+    let num = hex.match(/\w{2}/gi);
+    let rgb = "rgb (";
+    for (el of num){
+        rgb += parseInt(el, 16) +",";
+    }
+    rgb = rgb.slice(0, rgb.length-1) +")";
     return rgb;
 }
-
-console.log(hextorgb("#3020ff"));
+let number = "#3020ff";
+console.log(hexToRgb(number));
