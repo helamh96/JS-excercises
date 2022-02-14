@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <style>h1{text-align: center;}</style>
     <title>Document</title>
 </head>
 <body>
@@ -13,28 +13,25 @@
 
     </div>
     <script type="text/javascript" language="javascript">
-
         for (let i=0; i<25; i++){
             var div = document.createElement("div");
-            div.setAttribute('class',"dummy");
+            div.setAttribute("class","dummy");
             div.style.width = "18%";
-            div.style.margin="1%"
+            div.style.margin = "1%"
             div.style.height = "100px";
             div.style.background = "blue";
             div.style.color = "white";
             div.style.display="flex";
             div.style.float="left";
             div.style.justifyContent="center";
-            div.innerHTML = i;
-
+            div.style.textAlign="center";
+            div.innerHTML = i+1;
             document.getElementById("container").appendChild(div);
         }
-
-        document.querySelectorAll('.dummy').forEach(el =>{
-            el.addEventListener('click', () =>{
-                alert(el.textContent);
-            });
-        });
+        let cont = document.querySelector("#container")
+        cont.addEventListener("click", e =>{
+            alert(e.target.textContent);
+        })
     </script>
 </body>
 </html>
