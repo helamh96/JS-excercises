@@ -3,6 +3,12 @@ function Image(datum, width, heigth, name){
     this.width=width;
     this.heigth=heigth;
     this.name=name;
+    if (width*heigth === datum.length){
+            this.dat = datum;
+        }
+    else{ 
+            throw new Error("There is no relation with the Array and the width/heigth");
+        }
     this.pixelData = function(x,y){
         let newpix= ((x-1)*this.width+y);
         return this.dat[newpix];
