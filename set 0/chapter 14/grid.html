@@ -4,29 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box{
+            border: solid blue;
+            float: left;
+            box-sizing: border-box;
+            text-align: center;
+            height: 60px;
+        }
+    </style>
     <title>GRID CREATOR</title>
 </head>
-<style>
-
-    .box{
-        border: solid blue;
-        float: left;
-        box-sizing: border-box;
-        text-align: center;
-        height: 60px;
-    }
-
-</style>
 <body>
     <h1 style="text-align: center;">THIS IS A GRID CREATOR</h1>
     <h2 class="gui">
-        <input type="input" id="rows" name="rows" value="rows..."/>
-        <input type="input" id="col" name="col" value="columns..."/>
+        <input type="input" id="rows" name="rows" placeholder="Rows..." />
+        <input type="input" id="col" name="col" placeholder="Columns..."/>
         <button id="btn">display the grid</button>
     </h2>
-    <div class="cont">
-
-    </div>
+    <div class="cont"></div>
     <script>
         let newGrid = document.querySelector(".cont");
         function onClick(){
@@ -42,8 +38,8 @@
             }
         }
 
-    let button = document.getElementById('btn');
-    button.addEventListener('click', onClick);
+    let button = document.getElementById("btn");
+    button.addEventListener("click", onClick);
 
     </script> 
 </body>
