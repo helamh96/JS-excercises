@@ -12,16 +12,16 @@ let building = {"person":{"Alan":{"floor":"3","room":"4", "equipment":"broom"},
 function searching(){
     let cache = {};
     function looks (x){
-        if (Object.keys(cache).indexOf(x)>=0){
+        if (x in cache){
             return cache[x]
         }
         let item = {};
-        if (Object.keys(building["person"]).indexOf(x)>=0){
+        if (Object.keys(building["person"]).indexOf(x)>= 0){
             item = building["person"][x];
-        } else if (Object.keys(building["equipment"]).indexOf(x)>=0){
+        } else if (Object.keys(building["equipment"]).indexOf(x)>= 0){
             item = building["equipment"][x];
         }
-        if (Object.keys(item).length>0){
+        if (item){
             cache[x] = item;
         }
         return item;
@@ -33,4 +33,4 @@ let search = searching();
 console.log(search("Otis"));
 console.log(search("car"));
 console.log(search("Steve"));
-console.log(search("laptop"))
+console.log(search("laptop"));
