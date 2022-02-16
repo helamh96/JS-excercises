@@ -26,6 +26,7 @@
     <script>
         let newGrid = document.querySelector(".cont");
         function onClick(){
+            let fragment = new DocumentFragment();
             let rows = document.getElementById("rows").value;
             let cells = document.getElementById("col").value;
             let wid = 100/cells;
@@ -34,13 +35,12 @@
                 let div = document.createElement("div");
                 div.setAttribute("class", "box");
                 div.style.width = wid+"%";
-                newGrid.appendChild(div);
+                fragment.appendChild(div);
             }
+            newGrid.appendChild(fragment);
         }
-
-    let button = document.getElementById("btn");
-    button.addEventListener("click", onClick);
-
+        let button = document.getElementById("btn");
+        button.addEventListener("click", onClick);
     </script> 
 </body>
 </html>
