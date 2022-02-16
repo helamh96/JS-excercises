@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bank</title>
+</head>
+<body>
+    <h1>The bank</h1>
+    <script>
+        class Bank{
+            constructor(name, accounts){
+                this.name = name;
+                this.accounts = accounts;
+            }
+            getClient(accountNumber){
+                let client = this.accounts.filter(client => client["accountNumber"] === accountNumber)[0];
+                return client;
+            }
+            getBalance(accountNumber){
+                let balanceClient = this.getClient(accountNumber)
+                return balanceClient["funds"];
+            }
+            addClient(client){
+                this.accounts.push(client);
+            } 
+            withdraw(quantity, accountNumber){
+                let rc = this.getClient(accountNumber);
+                if (rc["funds"] >= quantity){
+                    rc["funds"] -= quantity;
+                    return quantity;
+                }else{
+                    console.log("Not enough money.");
+                }
+            }
+            deposit(quantity, destinyAccount){
+                let destinyUser = this.getClient(destinyAccount);
+                destinyUser["funds"] += quantity;
+            }
+        }
+
+        class Client{
+            constructor(name, cash, account){
+                this.name = name;
+                this.cash = cash;
+                this.account = account;
+            }
+            getBalance(){
+                return bank.getBalance(this.account);
+            }
+            deposit(quantity, receiver){
+                if(this.cash<quantity){
+                    console.log("Not enough cash");
+                } else{
+                    this.cash -= quantity;
+                    bank.deposit(quantity, receiver);
+                }
+            }
+            withdraw(quantity){
+                let validation = prompt("hi client #"+ this.account +" just for validation, what is your mame?");
+                if (validation === this.name){
+                    this.cash += bank.withdraw(quantity, this.account)
+                }else{
+                    console.log("you are not the owner of the account")
+                }
+                
+            }
+        }
+
+        function createClient(name, accountNumber, fund, cash){
+            let newClient = new Client(name, cash, accountNumber);
+            bank.addClient({"accountNumber":accountNumber, "cName":name, "funds":fund});
+            return newClient;
+        }
+
+        let bank = new Bank("bank", [{"accountNumber":0, "owner":"Alan", "funds": 1000}]);
+        let client0 = new Client("Alan", 500, 0);
+        console.log(client0.getBalance());
+        client0.withdraw(100);
+        console.log(client0.getBalance());
+        let client1 = createClient("Hector",1,2500,500);
+        console.log(client1.getBalance());
+        client1.withdraw(200);
+        console.log(client1.getBalance());
+        client1.deposit(1000,0);
+        console.log(client1.getBalance());
+        console.log(client0.getBalance());
+        client1.deposit(100,0);
+        console.log(client1.getBalance());
+        console.log(client0.getBalance());
+    </script>
+</body>
+</html>
