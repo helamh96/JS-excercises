@@ -1,14 +1,11 @@
-let i=0;
-let sum=0;
-
-function addRec(arr){
-    sum += arr[i];
-    if (arr.length -1 === i){
-        return sum;
+function sum(array){
+    if(array.length===0){return 0}
+    else{
+        return array[0]+sum(array.slice(1));
     }
-    i++;
-    return addRec(arr);
 }
 
-var arr = [ 1, 3, 5, 7];
-console.log(addRec(arr));
+let nArray=[1,2,3];
+let nSum = sum(nArray);
+console.log(nSum);   //sum is 6
+console.log(nArray);    //the original array is not destroyed
