@@ -86,15 +86,6 @@ class AirVehicle extends Vehicle{
     constructor(passengers, topSpeed, size, name, currentSpeed=0){
         super(passengers, topSpeed, size, name, currentSpeed=0)
     }
-    rise(meters){
-        this.height += meters;
-        console.log(`The new height is ${this.height}`);
-    }
-
-    descend(meters){
-        this.height -= meters;
-        console.log(`The new height is ${this.height}`);
-    }
 }
 
 class Airplane extends AirVehicle{
