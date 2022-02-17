@@ -12,9 +12,9 @@ let dates = {
 }
 
 function ChangeDate(USDate){
-    let foo = USDate.match(/\w{2}/gi);
+    let foo = USDate.match(/\d{1,4}/g);
     let ndate = foo[1]+"/"+foo[0]+"/"+foo[2];
     console.log("the date "+USDate+" in the US format is "+ndate+" in the Great Britain "+dates[ndate.slice(0,5)]);
 }
 
-ChangeDate("12/25/82");
+ChangeDate("12/25/1882");
