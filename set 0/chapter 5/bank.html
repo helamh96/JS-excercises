@@ -31,7 +31,7 @@
                     rc["funds"] -= quantity;
                     return quantity;
                 }else{
-                    console.log("Not enough money.");
+                    throw Error("Not enough money.");
                 }
             }
             deposit(quantity, destinyAccount){
@@ -51,7 +51,7 @@
             }
             deposit(quantity, receiver){
                 if(this.cash<quantity){
-                    console.log("Not enough cash");
+                    throw Error("Not enough cash");
                 } else{
                     this.cash -= quantity;
                     bank.deposit(quantity, receiver);
@@ -62,7 +62,7 @@
                 if (validation === this.name){
                     this.cash += bank.withdraw(quantity, this.account)
                 }else{
-                    console.log("you are not the owner of the account")
+                    throw Error("you are not the owner of the account")
                 }
                 
             }
