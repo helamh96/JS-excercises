@@ -1,0 +1,12 @@
+h1{text-align: center;}
+
+.dummy{
+    margin: 1%;
+    width: 18%;
+    height: 100px;
+    background: blue;
+    color: white;
+    display: flex;
+    float: left;
+    justify-content: center;
+}
