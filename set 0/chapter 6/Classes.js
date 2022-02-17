@@ -1,87 +1,128 @@
 class Shape{
-    constructor(nEdges){
-        this.nEdges=nEdges;
+    constructor(perimeter, area, edges){
+        this.edges = edges;
+        this.perimeter = perimeter;
+        this.area = area;
     }
-    get edges(){
-        return printE();
-    }
-    printE(){
-        return console.log(this.nEdges);
-    }
-}
-
-
-class Rectangle {
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
-  }
-  get area() {
-    return this.calcArea();
-  }
-  calcArea() {
-    return this.height * this.width;
-  }
-  get perimeter(){
-      return this.calcPerimeter();
-  }
-  calcPerimeter(){
-      return this.height*2+this.width*2;
-  }
-}
-
-class triangle{
-    constructor(side1, side2, side3){
-        this.side1=side1;
-        this.side2=side2;
-        this.side3=side3;
-    }
-    get perimeter(){
-        return this.calcPerimeter();
-    }
-    calcPerimeter(){
-        return this.side1+this.side2+this.side3;
-    }
-    get area(){
-        return this.calcArea();
-    }
-    calcArea(){
-        let s=(this.side1+this.side2+this.side3)/2;
-        return Math.sqrt(s*(s-this.side1)*(s-this.side2)*(s-this.side3));
+    display(){
+        console.log(this.edges);
     }
 }
 
-let square = new Rectangle(10, 10);
 
-console.log(square.area);
-console.log(square.perimeter);
-
-let triangl = new triangle(2,2,3);
-
-console.log(triangl.area);
-console.log(triangl.perimeter);
-
-//NEW CLASS
-
-class Pokemon{
-    constructor(namePoke, nPokedex, pType, pSize){
-        this.name=namePoke;
-        this.number=nPokedex;
-        this.type=pType;
-        this.size=pSize;
-    }
-    get combatPoint(){
-        return this.cp();
-    }
-    cp(){
-        return this.number*this.size;
+class Triangle extends Shape{
+    constructor(l1,l2,l3){
+        let s = (l1+l2+l3)/2;
+        let a = Math.sqrt(s*(s-l1)*(s-l2)*(s-l3));
+        super(2*s, a,3)
+        this.base = l1;
+        this.height = 2*a/l1;
     }
 }
 
-let bulbasaur= new Pokemon("bulbasaur",1, "plant/poison",70);
-console.log(bulbasaur.name);
-console.log(bulbasaur.combatPoint);
+class Quadrilateral extends Shape{
+    constructor(perimeter, area){
+        super(perimeter, area, 4);
+        
+    }
+}
 
-let kingdra =new Pokemon("kingdra",230,"watter/dragon",180)
-console.log(kingdra.name);
-console.log(kingdra.combatPoint);
+class Parallelogram extends Quadrilateral{
+    constructor(l1, l2, angle){
+        super(2*(l1+l2), l1*l2*Math.sin(angle));
+        this.base = l1;
+        this.height = l2*Math.sin(angle);
+    }
+}
+
+class Rectangle extends Parallelogram{
+    constructor(base,height){
+        super(base, height, Math.PI/2)
+    }
+}
+
+class Square extends Rectangle{
+    constructor(side){
+        super(side,side);
+        this.side = side;
+    }
+}
+
+let q = new Quadrilateral(2,4);
+console.log(q);
+let p = new Parallelogram(5,8,Math.PI/4);
+console.log(p);
+let r = new Rectangle(5,10);
+console.log(r);
+let s = new Square(3);
+console.log(s);
+let t = new Triangle(3,4,5);
+console.log(t);
+
+//NEW CLASS INHERITANCE
+
+class Vehicle{
+    constructor(passengers, topSpeed, size, name, currentSpeed=0){
+        this.passengers = passengers;
+        this.topSpeed = topSpeed;
+        this.size = size;
+        this.name = name;
+        this.currentSpeed = currentSpeed;
+    }
+    move(speed){
+        if (speed>this.topSpeed){
+            speed = this.topSpeed;
+        }
+        this.currentSpeed = speed;
+        console.log(`The vehicle ${this.name} is now moving with speed of ${this.currentSpeed}`);
+    }
+    stop(){
+        this.currentSpeed = 0;
+        console.log(`The vehicle ${this.name} has stopped.`)
+    }
+}
+
+class AirVehicle extends Vehicle{
+    constructor(passengers, topSpeed, size, name, currentSpeed=0){
+        super(passengers, topSpeed, size, name, currentSpeed=0)
+    }
+    rise(meters){
+        this.height += meters;
+        console.log(`The new height is ${this.height}`);
+    }
+
+    descend(meters){
+        this.height -= meters;
+        console.log(`The new height is ${this.height}`);
+    }
+}
+
+class Airplane extends AirVehicle{
+    constructor(passengers, topSpeed, size, name, typeWing, currentSpeed=0){
+        super(passengers, topSpeed, size, name, currentSpeed)
+        this.typeWing = typeWing;
+    }
+}
+
+class Helicopter extends AirVehicle{
+    constructor(passengers, topSpeed, size, name, numberPropeller, currentSpeed=0){
+        super(passengers, topSpeed, size, name, currentSpeed)
+        this.numberPropeller = numberPropeller;
+    }
+}
+
+let compoundHelicopter = new Helicopter(4,120,"small", "Compound Helicopter",2,80);
+console.log(compoundHelicopter);
+compoundHelicopter.move(70);
+console.log(compoundHelicopter);
+compoundHelicopter.stop();
+console.log(compoundHelicopter);
+
+let lightAirplane = new Airplane(20, 350, "medium", "Light Airplane", "Fixed Wing");
+console.log(lightAirplane);
+lightAirplane.move(150);
+console.log(lightAirplane);
+lightAirplane.stop();
+console.log(lightAirplane);
+lightAirplane.move(450);
+console.log(lightAirplane);
