@@ -1,9 +1,9 @@
-function printObjProp(objects,booleanValue){
+function printObjProp(objWithProps,booleanValue){
     if(booleanValue){
-        Object.keys(objects).forEach(prop => console.log(prop))
+        Object.keys(objWithProps).forEach(prop => console.log(prop))
     }
     else{
-        for (let prop in objects) {
+        for (let prop in objWithProps) {
             console.log(prop);
         }
     }
