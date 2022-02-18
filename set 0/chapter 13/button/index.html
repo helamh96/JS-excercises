@@ -15,14 +15,15 @@
     </div>
     <script type="text/javascript">
         let e = document.getElementsByClassName("cont");
-        let n=0;
+        const add = (function () {
+            let counter = 0;
+            return function () {counter += 1; return counter}
+            })();
         function click(){
+            let i= add();
+            if(i>=3){document.getElementsByClassName("btn")[0].disabled = true;}
             let met = document.getElementById("meter");
-            n++;
-            met.value = n;
-            if (n >= 3){
-                document.getElementsByClassName("btn")[0].disabled = true;
-            }
+            met.value = i;
         }
         let button = document.getElementsByClassName("btn")[0];
         button.addEventListener("click",click)
