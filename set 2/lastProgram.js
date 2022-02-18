@@ -25,7 +25,16 @@ console.log(cycle("aK89"));
 
 //THE HASHTAG PROGRAM
 
+let changingWord = "expression";
+let originalText = "Ask especially collecting terminated may son expression. Extremely eagerness principle estimable own was man. Men received far his dashwood subjects new. My sufficient surrounded an companions dispatched in on. Connection too unaffected expression led son possession. New smiling friends and her another. Leaf she does none love high yet. Snug love will up bore as be. Pursuit man son musical general pointed. It surprise informed mr advanced do outweigh.";
+function replaceWord(word){
+    let foo = '\\b'+word+'\\b';
+    let regex = new RegExp(foo,"gm");
+    newText = originalText.replace(regex, `<a href="https://twitter.com/search?q=%23${word}">#${word}</a>`);
+    console.log(newText);
+}
 
+replaceWord(changingWord);
 
 //THE PALINDROME FUNCTION
 
