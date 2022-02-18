@@ -1,0 +1,11 @@
+Date format <Month-string> <##day>, <####year>   ===>   (January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}
+
+A letter followed OR preceded by a number   ===>   ([0-9]+[a-zA-Z]|[a-zA-Z][0-9]+)
+
+txt, java, and cpp files with names consisting of only letters   ===>   [a-zA-Z]+(.ccp|.txt|.java)
+
+A 5 character palindrome   ===>   
+
+All words that consist of letters from b to y only   ===>   \b[b-yB-Y]+\b
+
+All the non nested tag elements in a string   ===>   <(.*?)>(.*?)<(.*?)>
