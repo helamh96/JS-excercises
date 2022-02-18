@@ -1,0 +1,21 @@
+.abc   ===>  *abc
+
+a+b?!!1{4} ===> aaaab!!1111
+
+.{3}a\.b   ===>   qwea.b
+
+\w   ===>   A
+
+\s   ===>    
+
+\d   ===>  1
+
+.   ===>   ?
+
+[abc]   ===> a
+
+(abc)   ===> abc
+
+[a-zA-Z_\$\.]+[A-Za-z_\$0-9\.]*@[a-zA-Z_\$\.]+[a-zA-Z_\$0-9\.]*\.(com|net|org){1} ===>   hhhernandez@intekglobal.com
+
+\([0oOn]{1}(_|\s)[0oOn]{1}\)   ===>   (0_0)
