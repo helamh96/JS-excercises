@@ -1,8 +1,8 @@
 //THE CYCLE PROGRAM
 
-function cycle(s){
-    function nextLetter(l){
-        let newLetter = l.charCodeAt(0);
+function cycle(expretion){
+    function nextLetter(letter){
+        let newLetter = letter.charCodeAt(0);
         if (newLetter===122){
             newLetter = 97;
         } else if (newLetter === 90){
@@ -12,11 +12,11 @@ function cycle(s){
         } else{
             newLetter++;
         }
-        l = String.fromCharCode(newLetter);
-        return l;
+        letter = String.fromCharCode(newLetter);
+        return letter;
     }
-    s = s.replace(/[A-Za-z0-9]/g,nextLetter);
-    return s;
+    expretion = expretion.replace(/[A-Za-z0-9]/g,nextLetter);
+    return expretion;
 }
 
 console.log(cycle("aBc"));
