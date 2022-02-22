@@ -38,3 +38,23 @@ replaceWord(changingWord);
 
 //THE PALINDROME FUNCTION
 
+function isPalindrome(str){
+    let revstr=str.split("").reverse().join("");
+    if(str.toLowerCase()===revstr.toLowerCase()){return true}
+
+}
+
+function palindromes(t){
+    let regex=/[,.!?;:]/g
+    t = t.replace(regex,"");
+    let words = t.split(" ");
+    let palindromes = [];
+    for(word of words){
+        if (isPalindrome(word)){palindromes.push(word);}
+    }
+    return palindromes;
+}
+
+let someText = "this are some examples of palindrome words: redivider, deified, civic, radar, level, rotor. and these are examples of non palindromes: hey, you, are, programin, java";
+
+console.log(palindromes(someText));
