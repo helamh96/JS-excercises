@@ -1,21 +1,22 @@
-function doSomething(){
-    console.log("hi, i'm doing something");
-}
+const fun = (a,b) => a+b;
 
 function limitFunc(fn, num){
-    let c = 0;
-    function lim(){
-        if (c<num){
-            c++;
-            return fn();
+    let counter = 0;
+    let r;
+    function limiting(...input){
+        if (counter< num){
+            counter++;
+            r = fn(...input)
+            return r;
         }
-        console.log("you exceed the amount of times the function can be excecuted");
     }
-    return lim;
+    return limiting;
 }
 
-var limited = limitFunc(doSomething,2);
 
-limited();
-limited();
-limited();
+var limited = limitFunc(fun, 3);
+
+limited(1,3);
+limited(1,3);
+limited(1,3);
+limited(1,3);
