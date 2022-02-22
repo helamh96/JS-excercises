@@ -15,17 +15,17 @@ function sorting(x,y){
             return x.sort(function(a,b){return b.length - a.length;});
             break;
         case "length descending":
-            return x.sort(function(a,b){return b.length - a.length;}).reverse();
+            return x.sort(function(a,b){return a.length - b.length;});
             break;
         case "consonants ascending":
             return x.sort(function(a,b){return consonants(b) - consonants(a);});
             break;
         case "consonants descending":
-            return x.sort(function(a,b){return consonants(b) - consonants(a);}).reverse();
+            return x.sort(function(a,b){return consonants(a) - consonants(b);});
             break;
     }
 }
 
 let arr=["one", "two", "three", "four", "five", "six", "seven", "eigth", "nine", "ten"];
 
-console.log(sorting(arr,"consonants descending"));
+console.log(sorting(arr,"length ascending"));
