@@ -10,11 +10,17 @@
         margin-top: 20px;
         cursor: pointer;
         }
-    
         .img2{
             height: 200px;
             float: left; 
             margin: 7px;
+        }
+        body{
+            counter-reset: counterTitle;
+        }
+        h2::before{
+            counter-increment: counterTitle;
+            content: "Title " counter(counterTitle);
         }
     </style>
     <title>API</title>
@@ -32,7 +38,7 @@
     <template id="temp2">
         <div>
             <img src="">
-            <h2></h2>
+            <h1></h1>
             <p></p>
             <a href="">Index</a>
         </div>
