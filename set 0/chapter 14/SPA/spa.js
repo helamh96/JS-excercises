@@ -38,7 +38,7 @@ function tmp2(topic,data){
     let image = div.querySelector("img");
     image.setAttribute("class","img2");
     image.setAttribute("src",data[topic]["image"]);
-    let title = div.querySelector("h2");
+    let title = div.querySelector("h1");
     title.textContent = data[topic]["title"];
     let text = div.querySelector("p");
     text.textContent = data[topic]["text"];
@@ -64,7 +64,6 @@ function prin(data, topics){
         divText.setAttribute("class",topic);
         let title = divText.querySelector("h2");
         title.setAttribute("class",topic);
-        title.textContent = "Tittle "+counter;
         let content = divText.querySelector("p");
         content.setAttribute("class",topic);
         content.innerHTML = data[topic]["text"].slice(0,535);
