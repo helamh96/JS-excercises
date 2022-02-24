@@ -12,8 +12,9 @@ let dates = {
 }
 
 function ChangeDate(USDate){
-    let foo = USDate.match(/\d{1,4}/g);
-    let ndate = foo[1]+"/"+foo[0]+"/"+foo[2];
+    let foo = USDate.match(/^(0\d{1}|1[0-2])\/([0-2]\d{1}|3[0-1])\/\d{4}\b/g);
+    foo=foo.toString();
+    let ndate = foo.slice(3,5)+"/"+foo.slice(0,2)+"/"+foo.slice(6,10);
     console.log("the date "+USDate+" in the US format is "+ndate+" in the Great Britain "+dates[ndate.slice(0,5)]);
 }
 
