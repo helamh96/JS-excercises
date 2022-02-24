@@ -1,11 +1,13 @@
-function sum(array){
-    if(array.length===0){return 0}
-    else{
-        return array[0]+sum(array.slice(1));
+function addRec(array, i=0, sum=0){
+    sum += array[i];
+    if (array.length -1 === i){
+        return sum;
     }
+    return addRec(array, i+1, sum);
 }
 
+
 let nArray=[1,2,3];
-let nSum = sum(nArray);
+let nSum = addRec(nArray);
 console.log(nSum);   //sum is 6
 console.log(nArray);    //the original array is not destroyed
