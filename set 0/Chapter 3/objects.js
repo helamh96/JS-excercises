@@ -1,5 +1,5 @@
-function printObjProp(objWithProps,booleanValue){
-    if(booleanValue){
+function printObjProp(objWithProps,instance){
+    if(instance){
         Object.keys(objWithProps).forEach(prop => console.log(prop))
     }
     else{
