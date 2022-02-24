@@ -21,6 +21,7 @@ window.addEventListener("hashchange", function() {
     if (topics.indexOf(topic)>=0){
         tmp2(topic,data);
     }else if(thash.length === 0){
+        elem.innerHTML="";
         prin(data, topics);
     }
 });
