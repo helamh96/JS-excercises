@@ -1,5 +1,5 @@
 function hexToRgb(hex){
-    let num = hex.match(/^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})\b/i);
+    let num = hex.match(/^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
     num.shift();
     let rgb = "rgb (";
     for (el of num){
