@@ -39,10 +39,21 @@ replaceWord(changingWord);
 //THE PALINDROME FUNCTION
 
 function isPalindrome(str){
-    let revstr=str.split("").reverse().join("");
-    if(str.toLowerCase()===revstr.toLowerCase()){return true}
-
+    str = str.toLowerCase();
+    let len = Math.floor(str.length/2);
+    let exp="";
+    for (let i = 0; i < len; i++){
+        exp += "(.)";
+    }
+    if ( !(len === str.length/2)) exp += "(.)";
+    for(let i = len; i>0; i--){
+        exp += `\\${i}`;
+    }
+    let regex = new RegExp(exp,"gm");
+    let palindrome = str.match(regex);
+    return Boolean(palindrome);
 }
+
 
 function palindromes(t){
     let regex=/[,.!?;:]/g
