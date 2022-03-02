@@ -8,4 +8,4 @@ A 5 character palindrome   ===>   \b(\w)?(\w)\w\2\1
 
 All words that consist of letters from b to y only   ===>   \b[b-yB-Y]+\b
 
-All the non nested tag elements in a string   ===>   <(.*?)>(.*?)<(.*?)>
+All the non nested tag elements in a string   ===>   <([A-z0-9]*)\b[^>]*>(.*?)<\/\1>
