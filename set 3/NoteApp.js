@@ -20,11 +20,11 @@ function saveNote(){
     if (Boolean(textSpace.value)){
         let newIndex = Number(lastIndex) +1;
         let d = new Date();
-        let noteData = {"creaDate":d.toString(), "lastMof":d.toString(), "note":textSpace.value};
+        let noteData = {"creaDate":d.toString(), "lastMod":d.toString(), "note":textSpace.value};
         let strData = JSON.stringify(noteData);
         localStorage.setItem(newIndex, strData);
         textSpace.value = "";
-        let renewIndexes = localStorage.getItem(0) + " "  + String(newIndex);
+        let renewIndexes = localStorage.getItem(0) + " " + String(newIndex);
         localStorage.setItem(0, renewIndexes);
         indexes = localStorage.getItem(0).split(" ")
         lastIndex = indexes[indexes.length-1];
@@ -35,6 +35,7 @@ function saveNote(){
 function displayNotes(){
     savedNotes.innerHTML = "";
     let fragment = document.createDocumentFragment()
+    indexes.reverse();
     for (let i of indexes){
         if(i!=="0"){
             let temp = document.querySelector("#notes");
@@ -58,6 +59,7 @@ function displayNotes(){
         }
     }
     savedNotes.appendChild(fragment);
+    indexes.reverse();
 }
 
 function deleteNote(event){
@@ -77,16 +79,12 @@ function editNote(event){
     let editButton = document.querySelector(".saveChangebtn");
     let saveButton = document.querySelector(".savebtn");
     let nData = JSON.parse(text);
-    let creationDate = document.querySelector(".creationDate");
-    let modifyDate = document.querySelector(".modifyDate");
     let dates = document.querySelector(".info");
     cancelingbtn.style.display = "inline";
     editButton.style.display = "inline";
     saveButton.style.display = "none";
     savedNotes.style.display = "none";
     textSpace.value = nData["note"];
-    creationDate.textContent = `creation date: ${nData["creaDate"].slice(0,15)}.`;
-    modifyDate.textContent = `Last modification: ${nData["lastMof"].slice(0,15)}.`;
     editButton.addEventListener("click", saveEdition, {once : true});
     editButton.parameters = {"editButton":editButton, "saveButton":saveButton, "savedNotes":savedNotes,
                               "textSpace":textSpace, "nData":nData,
@@ -103,7 +101,7 @@ function saveEdition(evt){
     if (Boolean(textSpace.value) && nData["note"] !== textSpace.value){
         let d = new Date;
         nData["note"] = textSpace.value;
-        nData["lastMof"] = d.toString()
+        nData["lastMod"] = d.toString()
         let strData = JSON.stringify(nData);
         localStorage.setItem(foo, strData);
     }
@@ -132,7 +130,7 @@ function viewNote(event){
     editButton.textContent = "Go back";
     dates.style.display = "flex";
     creationDate.textContent = `creation date: ${nData["creaDate"].slice(0,15)}.`;
-    modifyDate.textContent = `Last modification: ${nData["lastMof"].slice(0,15)}`;
+    modifyDate.textContent = `Last modification: ${nData["lastMod"].slice(0,15)}`;
     editButton.addEventListener("click", ()=>{
         editButton.style.display = "none";
         editButton.textContent = "Save the changes!";
