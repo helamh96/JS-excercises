@@ -1,14 +1,16 @@
-
-
 /*Declaration of the buttons */
 
-let textSpace = document.getElementsByClassName("textarea")[0];
-let button = document.querySelector(".savebtn");
+let buttons = document.querySelector(".notebtns");
+let textSpace = document.getElementById("textarea");
+let saveButton = document.querySelector(".savebtn");
 let savedNotes = document.querySelector(".savedNotes");
 let cancelingbtn = document.querySelector(".cancelbtn");
+let editButton = document.querySelector(".saveChangebtn");
+let dates = document.querySelector(".info");
 /* --------------------------------- */
 
 /* Declaration localstorage and the JSON object */
+
 let notesInfo = {};
 
 if(!localStorage.getItem(0)){
@@ -17,17 +19,18 @@ if(!localStorage.getItem(0)){
 /* -------------------------- */
 
 displayNotes();
-button.addEventListener("click",saveNote);
+saveButton.addEventListener("click",saveNote);
 textSpace.addEventListener("keydown", tabs);
 savedNotes.addEventListener("click", selectedbtn);
 cancelingbtn.addEventListener("click",cancelEdit)
 
 /* functions  */
+
 function saveNote(){
     if (Boolean(textSpace.value)){
         let d = Date.now();
         let notesInf = JSON.parse(localStorage.getItem(0));
-        let noteID = Math.floor(Math.random()*100000);
+        let noteID = d;
         let noteData = {"id": noteID, "creaDate":d.toString(), "lastMod":d.toString(), "note":textSpace.value};
         textSpace.value = " ";
         notesInf[noteID] = noteData;
@@ -65,7 +68,6 @@ function displayNotes(){
 
 function deleteNote(event){
     let ids = event.dataset.ids;
-    console.log(ids);
     let nNotes = localStorage.getItem(0);
     nNotes = JSON.parse(nNotes);
     delete nNotes[ids];
@@ -75,17 +77,13 @@ function deleteNote(event){
 
 function viewNote(event){
     let ids = event.dataset.ids;
-    let editButton = document.querySelector(".saveChangebtn");
-    let saveButton = document.querySelector(".savebtn");
-    let dates = document.querySelector(".info");
     let noteData = localStorage.getItem(0);
     let nData = JSON.parse(noteData);
     let text = nData[ids]["note"];
     let creationDate = document.querySelector(".creationDate");
     let modifyDate = document.querySelector(".modifyDate");
-    editButton.style.display = "inline";
-    saveButton.style.display = "none";
-    savedNotes.style.display = "none";
+    buttons.classList.add("view");
+    savedNotes.classList.add("view");
     textSpace.value = text;
     textSpace.readOnly = true;
     editButton.textContent = "Go back";
@@ -95,10 +93,9 @@ function viewNote(event){
     creationDate.textContent = `creation date: ${new Date(creation)}.`;
     modifyDate.textContent = `Last modification: ${new Date(modification)}`;
     editButton.addEventListener("click", ()=>{
-        editButton.style.display = "none";
+        buttons.classList.remove("view");
+        savedNotes.classList.remove("view");
         editButton.textContent = "Save the changes!";
-        saveButton.style.display = "inline";
-        savedNotes.style.display = "block";
         textSpace.value = "";
         textSpace.setAttribute("placeholder", "Write a note here");
         textSpace.readOnly = false;
@@ -110,28 +107,21 @@ function viewNote(event){
 function editNote(event){
     let ids = event.dataset.ids;
     let nData = localStorage.getItem(0);
-    let editButton = document.querySelector(".saveChangebtn");
-    let saveButton = document.querySelector(".savebtn");
     nData = JSON.parse(nData);
-    let dates = document.querySelector(".info");
-    cancelingbtn.style.display = "inline";
-    editButton.style.display = "inline";
-    saveButton.style.display = "none";
-    savedNotes.style.display = "none";
+    buttons.classList.add("editting");
+    savedNotes.classList.add("editting");
     textSpace.value = nData[ids]["note"];
     editButton.addEventListener("click", saveEdition, {once : true});
-    editButton.parameters = {"editButton":editButton, "saveButton":saveButton, "savedNotes":savedNotes,
+    editButton.parameters = {"savedNotes":savedNotes,
                               "textSpace":textSpace, "nData":nData,
-                               "dates":dates, "cancelingbtn":cancelingbtn, "ids":ids  }
+                               "dates":dates, "ids":ids  }
 }
 
 function saveEdition(evt){
     let parameters = evt.currentTarget.parameters;
-    let {editButton, saveButton, savedNotes, textSpace, nData, dates, cancelingbtn,
-        ids} = parameters;
-    editButton.style.display = "none";
-    saveButton.style.display = "inline";
-    savedNotes.style.display = "block";
+    let {savedNotes, textSpace, nData, dates, ids} = parameters;
+    buttons.classList.remove("editting");
+    savedNotes.classList.remove("editting");
     if (Boolean(textSpace.value) && nData[ids]["note"] !== textSpace.value){
         let d = new Date;
         d = d.getTime();
@@ -143,7 +133,6 @@ function saveEdition(evt){
     textSpace.value = "";
     textSpace.setAttribute("placeholder", "Write a note here");
     dates.style.display = "none";
-    cancelingbtn.style.display = "none";
     displayNotes();
 }
 
@@ -159,15 +148,10 @@ function tabs(event){
 
 
 function cancelEdit(){
-    let editButton = document.querySelector(".saveChangebtn");
     editButton.removeEventListener("click", saveEdition);
-    let saveButton = document.querySelector(".savebtn");
-    let dates = document.querySelector(".info");
-    cancelingbtn.style.display = "none";
-    editButton.style.display = "none";
     editButton.textContent = "Save change";
-    saveButton.style.display = "inline";
-    savedNotes.style.display = "block";
+    buttons.classList.remove("editting");
+    savedNotes.classList.remove("editting");
     textSpace.value = "";
     textSpace.setAttribute("placeholder", "Write a note here");
     textSpace.readOnly = false;
