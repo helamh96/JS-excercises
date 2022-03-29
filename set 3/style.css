@@ -18,14 +18,13 @@ textarea{
 .note{
     display: flex;
     flex-direction: column;
-
 }
 
 .savebtn{
-
     width: 20%;
     height: 30px;
 }
+
 .saveChangebtn{
     padding: 2px 24px;
     width: 20%;
@@ -99,4 +98,39 @@ p{
     margin-top: 8px;
     text-align: center;
     width: 25%;
+}
+
+/*editing*/
+.editting>.savebtn{
+    display: none !important;
+}
+
+.editting>.cancelbtn{
+    display: inline !important;
+}
+
+.editting>.saveChangebtn{
+    display: inline !important;
+}
+
+.editting.savedNotes{
+    display: none !important;
+}
+
+
+ /*viewing*/
+.view>.savebtn{
+    display: none !important;
+}
+
+.view>.cancelbtn{
+    display: none !important;
+}
+
+.view>.saveChangebtn{
+    display: inline !important;
+}
+
+.view.savedNotes{
+    display: none !important;
 }
